@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <component-scan base-package="com.github.model,com.github.service.impl">
+    </component-scan>
+    <bean id="user" class="com.github.model.User">
+        <property name="userId" value="1" class="java.lang.Long"></property>
+        <property name="name" value="康盼" class="java.lang.String"></property>
+        <property name="age" value="18" class="java.lang.Integer"></property>
+        <property name="sex" value="男" class="java.lang.String"></property>
+    </bean>
+    <bean id="vipUserServiceImpl" class="com.github.service.impl.VipUserServiceImpl" init-method="initDataMethod" destroy-method="destroyDataMethod">
+        <property name="user" class="com.github.model.User" ref="user"></property>
+    </bean>
+</beans>
