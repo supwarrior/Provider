@@ -25,10 +25,16 @@ public class ResultController {
 
     @GetMapping(path = "/retry")
     @RepeatSubmit
-    public ResultInfo retry() throws Exception {
-        ResultServiceImpl proxy = proxyRetry.getProxy();
-        String code = saveService.getCode(1);
-        ResultInfo resultInfo = proxy.callback(code);
-        return resultInfo;
+    public ResultInfo retry() {
+        try {
+            ResultServiceImpl proxy = proxyRetry.getProxy();
+            String code = saveService.getCode(1);
+            ResultInfo resultInfo = proxy.callback(code);
+            return resultInfo;
+        } catch (Exception exception) {
+            ResultInfo resultInfo = new ResultInfo();
+            resultInfo.setMessage(exception.getMessage());
+            return resultInfo;
+        }
     }
 }

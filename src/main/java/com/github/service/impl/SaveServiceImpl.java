@@ -2,13 +2,11 @@ package com.github.service.impl;
 
 import com.github.annotation.Component;
 import com.github.service.ISaveService;
-import org.springframework.stereotype.Service;
 
 /**
  * @author 康盼Java开发工程师
  */
 @Component
-@Service
 public class SaveServiceImpl implements ISaveService {
 
     /**

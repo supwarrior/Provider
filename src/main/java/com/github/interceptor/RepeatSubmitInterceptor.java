@@ -1,12 +1,14 @@
 package com.github.interceptor;
 
+import com.alibaba.fastjson.JSON;
 import com.github.annotation.RepeatSubmit;
-import org.springframework.stereotype.Component;
+import com.github.model.ResultInfo;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
 /**
@@ -22,10 +24,16 @@ public abstract class RepeatSubmitInterceptor extends HandlerInterceptorAdapter 
             RepeatSubmit annotation = method.getAnnotation(RepeatSubmit.class);
             if (annotation != null) {
                 if (this.isRepeatSubmit(request)) {
+                    ResultInfo resultInfo = new ResultInfo();
                     String errorMessage = "不允许重复提交，请稍后再试";
+                    resultInfo.setMessage(errorMessage);
+                    String result = JSON.toJSONString(resultInfo);
                     response.setContentType("application/json");
                     response.setCharacterEncoding("utf-8");
-                    response.getWriter().print(errorMessage);
+                    PrintWriter writer = response.getWriter();
+                    writer.print(result);
+                    writer.close();
+                    response.flushBuffer();
                     return false;
                 }
             }

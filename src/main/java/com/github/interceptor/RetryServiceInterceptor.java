@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
+/** register
  * @author 康盼Java开发工程师
  */
 @Component
@@ -50,9 +50,7 @@ public class RetryServiceInterceptor extends RepeatSubmitInterceptor {
      * 判断参数是否相同
      */
     private boolean compareParams(Map<String, Object> nowMap, Map<String, Object> preMap) {
-        String nowParams = (String) nowMap.get("params");
-        String preParams = (String) preMap.get("params");
-        return nowParams.equals(preParams);
+        return (nowMap.get("params")).equals(preMap.get("params"));
     }
 
     /**

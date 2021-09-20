@@ -1,6 +1,5 @@
 package com.github.config;
 
-import com.github.interceptor.RepeatSubmitInterceptor;
 import com.github.interceptor.RetryServiceInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

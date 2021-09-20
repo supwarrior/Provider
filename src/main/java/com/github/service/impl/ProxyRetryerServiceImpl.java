@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
-import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,7 +16,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author 康盼Java开发工程师
  */
 @Component
-@Service
 public class ProxyRetryerServiceImpl extends Retryer implements MethodInterceptor {
 
     @Inject

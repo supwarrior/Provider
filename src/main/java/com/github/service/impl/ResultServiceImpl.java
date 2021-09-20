@@ -3,7 +3,6 @@ package com.github.service.impl;
 import com.github.annotation.Component;
 import com.github.model.ResultInfo;
 import com.github.service.IResultService;
-import org.springframework.stereotype.Service;
 
 import java.util.Random;
 import java.util.SplittableRandom;
@@ -13,7 +12,6 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author 康盼Java开发工程师
  */
 @Component
-@Service
 public class ResultServiceImpl implements IResultService {
 
     /**
