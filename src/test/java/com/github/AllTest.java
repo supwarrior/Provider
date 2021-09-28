@@ -6,6 +6,7 @@ import com.github.javabean.BeanDriverManager;
 import com.github.javabean.BeanLoader;
 import com.github.javabean.Beans;
 import com.github.model.ResultInfo;
+import com.github.resource.UnitTestUtil;
 import com.github.service.IUserService;
 import com.github.model.User;
 import com.github.service.impl.ProxyRetryerServiceImpl;
@@ -22,6 +23,7 @@ import org.openjdk.jol.vm.VM;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 
 /**
@@ -99,8 +101,6 @@ public class AllTest {
         Beans.getByType(VipUserServiceImpl.class);
         Beans.getByType(User.class);
         manager.printAllBean();
-        manager = (BeanDriverManager) Beans.cache.get("beanDriverManager");
-        Assert.assertNull(manager);
     }
 
     @Test
@@ -169,6 +169,16 @@ public class AllTest {
         ResultInfo resultInfo = proxy.callback(code);
         System.out.println(resultInfo.getState());
         System.out.println(resultInfo.getMessage());
+    }
+
+    @Test
+    public void getClassName() throws Exception {
+        String basedir = System.getProperty("user.dir");
+        String packageName = "com.github";
+        List<String> result = UnitTestUtil.getClassName(basedir,packageName,true);
+        for(String str : result) {
+            System.out.println(str);
+        }
     }
 
 }
